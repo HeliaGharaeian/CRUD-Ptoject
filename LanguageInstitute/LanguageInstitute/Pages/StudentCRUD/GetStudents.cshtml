@@ -1,0 +1,46 @@
+﻿@page
+@model LanguageInstitute.Pages.StudentCRUD.GetStudentsModel
+@{
+}
+
+
+<h1>Student List</h1>
+
+
+
+
+<a href="CreateStudent" class="btn btn-success " role="button" aria-disabled="true">Create</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Gender</th>
+            <th>Class Number</th>
+            <th>Delete|Edit </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Students)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Gender</td>
+                <td>@item.ClassId</td>
+                <td>
+                    <a asp-page="./DeleteStudent" onclick="return confirm('Are you sure you want to ');" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-page="./EditStudent" asp-page-handler="EditStudent" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@*<a href="Index" class="btn btn-outline-primary" role="button" aria-disabled="true">Back MainPage</a>
+*@
+
